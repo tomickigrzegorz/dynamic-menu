@@ -12,7 +12,7 @@ function showHideLi(e) {
   );
 
   // hide/show menu when resize
-  // subMenuContent.classList.add("hidden");
+  subMenuContent.classList.add("hidden");
 
   let sumOfAllWidths = 0;
   const liElements = document.querySelectorAll(".menu > li:not(.sub-menu)");
