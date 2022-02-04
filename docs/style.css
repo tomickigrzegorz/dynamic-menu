@@ -67,7 +67,7 @@ li a:hover {
   border: 1px solid #ccc;
   display: flex;
   white-space: nowrap;
-  min-width: 300px;
+  min-width: 230px;
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
 }
