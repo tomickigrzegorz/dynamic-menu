@@ -77,7 +77,4 @@ function copyLiELementToSubMenu(arrayLi, type) {
 }
 
 window.addEventListener("resize", showHideLi);
-document.addEventListener("change", () => {
-  alert("ok");
-});
-window.addEventListener("DOMContentLoaded", showHideLi);
+window.addEventListener("load", showHideLi);
