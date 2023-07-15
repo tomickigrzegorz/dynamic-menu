@@ -17,7 +17,6 @@ function showHideLi(e) {
 
   let sumOfAllWidths = 0;
   const liElements = document.querySelectorAll(".menu > li:not(.sub-menu)");
-  let lengthLi = liElements.length;
   let widthAllLi = 0;
 
   let arrayLi = [];
@@ -40,7 +39,7 @@ function showHideLi(e) {
 
   copyLiELementToSubMenu(arrayLi, e.type);
 
-  subMenu.classList.add("show-submenu", lengthLi < 8);
+  subMenu.classList.add("show-submenu", widthMenu - 40 < widthAllLi);
 
   const firstElementFromSubMenu = subMenuContent.firstChild;
   const firstELementSubMenu = +firstElementFromSubMenu?.dataset.width;
