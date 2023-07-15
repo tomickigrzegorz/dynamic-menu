@@ -67,7 +67,7 @@ document.addEventListener("click", (e) => {
 // copy li element to submenu
 function copyLiELementToSubMenu(arrayLi, type) {
   const sortLiByIndex = arrayLi.sort(
-    (a, b) => Number(b.dataset.index) - Number(a.dataset.index)
+    (a, b) => Number(a.dataset.index) - Number(b.dataset.index)
   );
 
   const typeLoad = type == "load" ? "beforeend" : "afterbegin";
