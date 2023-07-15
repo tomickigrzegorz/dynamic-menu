@@ -1,10 +1,12 @@
 {
   "name": "dynamic-menu",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.1",
+  "main": "dist/script.js",
+  "description": "dynamic menu",
   "license": "MIT",
+  "author": "Grzegorz Tomicki",
   "devDependencies": {
-    "eslint": "^8.8.0",
-    "prettier": "^2.5.1"
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0"
   }
 }

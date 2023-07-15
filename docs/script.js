@@ -1,5 +1,6 @@
 const subMenuContent = document.querySelector(".sub-menu-container");
 const subMenu = document.querySelector(".sub-menu");
+
 function showHideLi(e) {
   const menuUl = document.querySelector(".menu");
   const subMenuWidth = subMenu.getBoundingClientRect().width;
@@ -18,18 +19,25 @@ function showHideLi(e) {
   const liElements = document.querySelectorAll(".menu > li:not(.sub-menu)");
   let lengthLi = liElements.length;
   let widthAllLi = 0;
-  liElements.forEach((li) => {
-    li.dataset.width = li.getBoundingClientRect().width;
+
+  let arrayLi = [];
+
+  liElements.forEach((li, index) => {
+    li.dataset.width = li.getBoundingClientRect().width.toFixed(2);
+    li.dataset.index = index;
     sumOfAllWidths = sumOfAllWidths + Number(li.dataset.width);
-    widthAllLi += li.getBoundingClientRect().width;
-    if (widthMenu - subMenuWidth - 15 < widthAllLi) {
+    widthAllLi += li.getBoundingClientRect().width.toFixed(0) * 1;
+
+    if (widthMenu < widthAllLi) {
       if (li.classList.contains("sub-menu")) return;
-      copyToSubMenu(li, e.type);
+      arrayLi.push(li);
       li.remove();
     } else {
       subMenu.classList.remove("show-submenu");
     }
   });
+
+  copyLiELementToSubMenu(arrayLi, e.type);
 
   subMenu.classList.add("show-submenu", lengthLi < 8);
 
@@ -37,7 +45,7 @@ function showHideLi(e) {
   const firstELementSubMenu = +firstElementFromSubMenu?.dataset.width;
 
   if (firstElementFromSubMenu) {
-    if (firstELementSubMenu + sumOfAllWidths <= widthMenu - 50) {
+    if (firstELementSubMenu + sumOfAllWidths <= widthMenu - 45) {
       subMenu.insertAdjacentElement("beforebegin", firstElementFromSubMenu);
     }
   } else {
@@ -55,13 +63,20 @@ document.addEventListener("click", (e) => {
   return;
 });
 
-function copyToSubMenu(li, type) {
-  const liCopy = li.cloneNode(true);
-  subMenuContent.insertAdjacentElement(
-    type == "load" ? "beforeend" : "afterbegin",
-    liCopy
+// copy li element to submenu
+function copyLiELementToSubMenu(arrayLi, type) {
+  const sortLiByIndex = arrayLi.sort(
+    (a, b) => Number(b.dataset.index) - Number(a.dataset.index)
   );
+
+  const typeLoad = type == "load" ? "beforeend" : "afterbegin";
+  sortLiByIndex.forEach((li) => {
+    subMenuContent.insertAdjacentElement(typeLoad, li);
+  });
 }
 
 window.addEventListener("resize", showHideLi);
-window.addEventListener("load", showHideLi);
+document.addEventListener("change", () => {
+  alert("ok");
+});
+window.addEventListener("DOMContentLoaded", showHideLi);
