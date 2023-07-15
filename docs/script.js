@@ -39,6 +39,7 @@ function showHideLi(e) {
 
   copyLiELementToSubMenu(arrayLi, e.type);
 
+  // add class when widtmMenu - 40(button size) < width all li in ul
   subMenu.classList.add("show-submenu", widthMenu - 40 < widthAllLi);
 
   const firstElementFromSubMenu = subMenuContent.firstChild;
