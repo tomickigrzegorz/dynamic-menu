@@ -28,7 +28,8 @@ function showHideLi(e) {
     sumOfAllWidths = sumOfAllWidths + Number(li.dataset.width);
     widthAllLi += li.getBoundingClientRect().width.toFixed(0) * 1;
 
-    if (widthMenu < widthAllLi) {
+    // 40 this is button width show submenu
+    if (widthMenu - 40 < widthAllLi) {
       if (li.classList.contains("sub-menu")) return;
       arrayLi.push(li);
       li.remove();
@@ -45,7 +46,7 @@ function showHideLi(e) {
   const firstELementSubMenu = +firstElementFromSubMenu?.dataset.width;
 
   if (firstElementFromSubMenu) {
-    if (firstELementSubMenu + sumOfAllWidths <= widthMenu - 45) {
+    if (firstELementSubMenu + sumOfAllWidths <= widthMenu) {
       subMenu.insertAdjacentElement("beforebegin", firstElementFromSubMenu);
     }
   } else {
