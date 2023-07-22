@@ -96,7 +96,7 @@ li a:hover {
 .sub-menu-container {
   position: absolute;
   right: 0;
-  top: var(--submenu-top);
+  top: var(--submenu-top, 40px);
   background: #c03600;
 }
 

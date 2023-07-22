@@ -1,16 +1,13 @@
 const subMenuContent = document.querySelector(".sub-menu-container");
 const subMenu = document.querySelector(".sub-menu");
+const root = document.documentElement;
 
 function showHideLi(e) {
-  const menuUl = document.querySelector(".menu");
-  const subMenuWidth = subMenu.getBoundingClientRect().width;
-  const { width: widthMenu, height: heightMenu } =
-    menuUl.getBoundingClientRect();
+  const { width: widthMenu, height: heightMenu } = document
+    .querySelector(".menu")
+    .getBoundingClientRect();
 
-  document.documentElement.style.setProperty(
-    "--submenu-top",
-    `${heightMenu}px`
-  );
+  root.style.setProperty("--submenu-top", `${heightMenu}px`);
 
   // hide/show menu when resize
   subMenuContent.classList.add("hidden");
@@ -19,7 +16,7 @@ function showHideLi(e) {
   const liElements = document.querySelectorAll(".menu > li:not(.sub-menu)");
   let widthAllLi = 0;
 
-  let arrayLi = [];
+  let liArray = [];
 
   liElements.forEach((li, index) => {
     li.dataset.width = li.getBoundingClientRect().width.toFixed(2);
@@ -30,14 +27,14 @@ function showHideLi(e) {
     // 40 this is button width show submenu
     if (widthMenu - 40 < widthAllLi) {
       if (li.classList.contains("sub-menu")) return;
-      arrayLi.push(li);
+      liArray.push(li);
       li.remove();
     } else {
       subMenu.classList.remove("show-submenu");
     }
   });
 
-  copyLiELementToSubMenu(arrayLi, e.type);
+  copyLiELementToSubMenu(liArray, e.type);
 
   // add class when widtmMenu - 40(button size) < width all li in ul
   subMenu.classList.add("show-submenu", widthMenu - 40 < widthAllLi);
